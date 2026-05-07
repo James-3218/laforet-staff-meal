@@ -5,7 +5,7 @@
    ============================================ */
 
 /* ── SET YOUR APPS SCRIPT WEB APP URL HERE ── */
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzvm0nZ4CaV3nESJY8-kyss6Bymjqds-Nukn3RwQv3nHUvCQe-qnVBAuFbpkQI_WsxkRw/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycby0swCLXTSI5j9PFr0n1UK5a8MNXa6NbMpkJiGF6iQd72h6fqSAnlFAaokJ-XjCLLgAZg/exec';
 
 /* ════════════════════════════════════════════
    BASE STAFF DATA (hardcoded, read-only)
