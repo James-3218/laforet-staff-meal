@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Laforêt — My Staff Meal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="staff-page">
+
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+<div class="deco-line deco-line-1"></div>
+<div class="deco-line deco-line-2"></div>
+
+<!-- Top bar -->
+<header class="top-bar">
+  <button class="back-btn" onclick="goBack()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    <span>Back</span>
+  </button>
+  <div class="brand-wordmark">LA FORÊT</div>
+  <div class="top-bar-spacer"></div>
+</header>
+
+<!-- Main content -->
+<main class="main-wrap">
+
+  <!-- Welcome line -->
+  <div class="welcome-line" id="welcomeLine">
+    <span class="welcome-label">Welcome back,</span>
+    <span class="welcome-name" id="welcomeName">—</span>
+  </div>
+
+  <!-- Personal card -->
+  <div class="pref-card-wrap">
+    <div class="pref-card">
+
+      <!-- Card shimmer line -->
+      <div class="card-shimmer"></div>
+
+      <!-- Staff identity -->
+      <div class="identity-row">
+        <div class="avatar" id="avatarEl">—</div>
+        <div class="identity-text">
+          <div class="identity-name" id="staffNameEl">—</div>
+          <div class="identity-role">Staff · Meal Preference</div>
+          <div class="identity-dept" id="deptEl"></div>
+        </div>
+        <div class="weekend-badge">This Weekend</div>
+      </div>
+
+      <div class="pref-divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- Day sections -->
+      <div class="day-section" style="animation-delay: 0.2s;">
+        <div class="day-header">
+          <div class="day-label">
+            <span class="day-name">Saturday</span>
+            <span class="day-date" id="satDate">—</span>
+          </div>
+          <div class="day-status" id="satStatus"></div>
+        </div>
+        <div class="toggle-group">
+          <button class="toggle-btn" id="satYes" onclick="setDay('sat', true)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Yes, I'll eat</span>
+          </button>
+          <button class="toggle-btn" id="satNo" onclick="setDay('sat', false)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>No, thanks</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="day-separator"></div>
+
+      <div class="day-section" style="animation-delay: 0.3s;">
+        <div class="day-header">
+          <div class="day-label">
+            <span class="day-name">Sunday</span>
+            <span class="day-date" id="sunDate">—</span>
+          </div>
+          <div class="day-status" id="sunStatus"></div>
+        </div>
+        <div class="toggle-group">
+          <button class="toggle-btn" id="sunYes" onclick="setDay('sun', true)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Yes, I'll eat</span>
+          </button>
+          <button class="toggle-btn" id="sunNo" onclick="setDay('sun', false)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>No, thanks</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="pref-divider" style="margin-top: 28px;">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
+
+
+
+      <!-- Note field -->
+      <div class="note-group" style="animation-delay: 0.4s;">
+        <div class="note-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Special note
+        </div>
+        <textarea class="note-field" id="noteField" placeholder="e.g. nut allergy, vegetarian, no gluten…" rows="3"></textarea>
+      </div>
+
+      <!-- Save button -->
+      <div class="save-wrap" style="animation-delay: 0.5s;">
+        <button class="btn-save" id="saveBtn" onclick="savePreference()">
+          <span id="saveBtnText">Save Preference</span>
+        </button>
+      </div>
+
+      <!-- Last saved indicator -->
+      <div class="last-saved" id="lastSaved"></div>
+
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <p class="footer-text">Laforêt <span class="footer-gold">·</span> Staff Access Only</p>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+<script>
+  initStaffPage().catch(console.error);
+</script>
+</body>
+</html>
