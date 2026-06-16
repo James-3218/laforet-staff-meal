@@ -30,7 +30,11 @@ function doGet(e) {
     const action = body.action;
 
     if (action !== 'forceReset') {
-      ensureCurrentWeekReset();
+      try {
+        ensureCurrentWeekReset();
+      } catch(resetErr) {
+        Logger.log('Weekly reset check failed: ' + resetErr.message);
+      }
     }
 
     switch (action) {
