@@ -93,6 +93,7 @@ function getResetSheet() {
     sheet.getRange(1, 1, 1, 1).setValues([['ResetDate']]);
     sheet.getRange(1, 1, 1, 1).setFontWeight('bold');
   }
+  sheet.getRange('A:A').setNumberFormat('@');
   return sheet;
 }
 
@@ -323,13 +324,16 @@ function ensureCurrentWeekReset() {
 
 function resetForMondayKey(mondayKey) {
   const resetSheet = getResetSheet();
-  const resets = resetSheet.getDataRange().getValues();
-  for (let i = 1; i < resets.length; i++) {
-    if (normalizeResetKey(resets[i][0]) === mondayKey) return { ok: true, alreadyDone: true };
+  const lastRow = resetSheet.getLastRow();
+  if (lastRow > 1) {
+    const resets = resetSheet.getRange(2, 1, lastRow - 1, 1).getDisplayValues();
+    for (let i = 0; i < resets.length; i++) {
+      if (normalizeResetKey(resets[i][0]) === mondayKey) return { ok: true, alreadyDone: true };
+    }
   }
 
   _clearSatSun();
-  resetSheet.getRange(resetSheet.getLastRow() + 1, 1).setValue(mondayKey);
+  resetSheet.getRange(lastRow + 1, 1).setNumberFormat('@').setValue(mondayKey);
   return { ok: true, reset: true };
 }
 
@@ -379,9 +383,6 @@ function getMondayKey(date) {
 }
 
 function normalizeResetKey(value) {
-  if (Object.prototype.toString.call(value) === '[object Date]' && !isNaN(value.getTime())) {
-    return Utilities.formatDate(value, APP_TIME_ZONE, 'yyyy-MM-dd');
-  }
   const text = String(value || '').trim();
   const isoMatch = text.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
   if (isoMatch) {
