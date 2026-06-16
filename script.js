@@ -196,8 +196,8 @@ async function resetWeeklyPreferences() {
     if (now.getDay() !== 1) return;
     const mondayKey = now.toLocaleDateString('en-CA');
     if (sessionStorage.getItem('laforet_reset_sent') === mondayKey) return;
-    sessionStorage.setItem('laforet_reset_sent', mondayKey);
     await gasRequest('resetWeekly', { mondayKey });
+    sessionStorage.setItem('laforet_reset_sent', mondayKey);
     console.log('Laforêt: Weekly Monday reset sent to server');
   } catch(e) {
     console.warn('Laforêt: Weekly reset failed:', e.message);
